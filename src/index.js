@@ -1,15 +1,15 @@
-import "./style.css";
-import TodoStore from "./modules/todo-store";
+import './style.css';
+import TodoStore from './modules/todo-store.js';
 
 const store = new TodoStore();
-const todosContainer = document.getElementById("todoList");
-const form = document.getElementById("form");
+const todosContainer = document.getElementById('todoList');
+const form = document.getElementById('form');
 
 const renderTodo = () => {
   todosContainer.innerHTML = '';
-  
+
   store.store().forEach((todo) => {
-    const todoItem = document.createElement("li");
+    const todoItem = document.createElement('li');
     todoItem.innerHTML = `
         <div class="title">
             <input id="${todo.Index}" type="checkbox" cheecked="${todo.Completed} value="${todo.Completed}">
@@ -34,13 +34,13 @@ const addTodo = (e) => {
   e.preventDefault();
   const todo = Object.fromEntries(new FormData(e.target).entries());
 
-  if (todo.description !== "") {
+  if (todo.description !== '') {
     store.add(todo.description);
     renderTodo();
     form.reset();
   }
 };
 
-form.addEventListener("submit", addTodo);
+form.addEventListener('submit', addTodo);
 
 renderTodo();

@@ -1,6 +1,8 @@
 class Todo {
   #index;
+
   #description;
+
   #completed;
 
   constructor(index, description, completed) {

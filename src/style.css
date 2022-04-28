@@ -40,9 +40,6 @@ button {
   border-bottom: 1px solid rgb(211, 211, 211);
   justify-content: space-between;
   align-items: center;
-}
-
-.title-container {
   font-size: 15px;
 }
 
