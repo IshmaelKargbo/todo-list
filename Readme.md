@@ -12,10 +12,6 @@ TODO List is a simple website that displays a list of todo and allows you to add
 - Webpack
 - JavaScript
 
-## Live Demo
-
-<a href="https://ishmaelkargbo.github.io/awesome-books/">TODO List</a>
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
