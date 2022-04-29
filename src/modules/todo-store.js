@@ -27,6 +27,11 @@ class TodoStore {
     return this.#store;
   }
 
+  hasCompleted() {
+    const state = this.#store.find((todo) => Boolean(todo.Completed));
+    return state !== undefined;
+  }
+
   add(description) {
     const index = Math.random().toString(36).slice(2);
     const todo = new Todo(index, description, false);
@@ -44,6 +49,16 @@ class TodoStore {
     this.#store[todoIndex] = todo;
   }
 
+  checkToggle(id, state) {
+    const todoIndex = this.#store.findIndex((todo) => todo.Index === id);
+    if (todoIndex < 0) return;
+    const todo = this.#store[todoIndex];
+    todo.completed = state;
+
+    this.#store[todoIndex] = todo;
+    this.#backup();
+  }
+
   remove(id) {
     this.#store = this.#store.filter((todo) => todo.Index !== id);
     this.#backup();
@@ -57,6 +72,11 @@ class TodoStore {
 
     this.#store[todoIndex] = todo;
     this.#unEdit();
+    this.#backup();
+  }
+
+  clearCompleted() {
+    this.#store = this.#store.filter((todo) => !todo.Completed);
     this.#backup();
   }
 

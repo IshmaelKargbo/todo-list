@@ -17,20 +17,23 @@ const renderTodo = () => {
     clear.style.display = 'none';
   } else {
     empty.style.display = 'none';
-    clear.style.display = 'block';
+
+    // toggle clear button
+    if (!store.hasCompleted()) clear.style.display = 'none';
+    else clear.style.display = 'block';
   }
 
   store.store().forEach((todo) => {
     const todoItem = document.createElement('li');
 
     const editState = `
-      <input value=${todo.Description} autofocus type="text" class="edit"  id="field_${todo.Index}">
+      <input value=${todo.Description} autofocus type="text" class="edit" id="field_${todo.Index}">
     `;
 
     const normalState = `
-      <div class="title" id="edit_${todo.Index}">
-          <input id="${todo.Index}" type="checkbox" cheecked="${todo.Completed} value="${todo.Completed}">
-          <label for="${todo.Index}">${todo.Description}</label>
+      <div class="title">
+          <input id="check_${todo.Index}" type="checkbox">
+          <p id="edit_${todo.Index}" for="${todo.Index}">${todo.Description}</p>
       </div>
       <button id="del_${todo.Index}">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="17" height="17"
@@ -49,9 +52,26 @@ const renderTodo = () => {
 
     // set todo state to edit state
     const field = document.getElementById(`edit_${todo.Index}`);
+
     if (field) {
+      // Pass line through on completed todo
+      if (todo.Completed) field.style.textDecoration = 'line-through';
+
       field.addEventListener('dblclick', () => {
         store.editState(todo.Index, true);
+        renderTodo();
+      });
+    }
+
+    // Mark todo complete
+    const check = document.getElementById(`check_${todo.Index}`);
+    check.checked = todo.Completed;
+    check.value = todo.Completed;
+
+    if (check) {
+      check.addEventListener('change', ({ target }) => {
+        const state = target.value !== 'true';
+        store.checkToggle(todo.Index, state);
         renderTodo();
       });
     }
@@ -103,6 +123,13 @@ const addTodo = (e) => {
   }
 };
 
+// clear all completed todo
+const clearCompleted = () => {
+  store.clearCompleted();
+  renderTodo();
+};
+
 form.addEventListener('submit', addTodo);
+clear.addEventListener('click', clearCompleted);
 
 renderTodo();
