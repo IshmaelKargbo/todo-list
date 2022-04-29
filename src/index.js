@@ -17,7 +17,10 @@ const renderTodo = () => {
     clear.style.display = 'none';
   } else {
     empty.style.display = 'none';
-    clear.style.display = 'block';
+
+    // toggle clear button
+    if (!store.hasCompleted()) clear.style.display = 'none';
+    else clear.style.display = 'block';
   }
 
   store.store().forEach((todo) => {
@@ -120,8 +123,10 @@ const addTodo = (e) => {
   }
 };
 
+// clear all completed todo
 const clearCompleted = () => {
-  console.log('helo');
+  store.clearCompleted();
+  renderTodo();
 };
 
 form.addEventListener('submit', addTodo);

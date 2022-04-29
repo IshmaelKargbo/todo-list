@@ -27,6 +27,11 @@ class TodoStore {
     return this.#store;
   }
 
+  hasCompleted() {
+    const state = this.#store.find((todo) => Boolean(todo.Completed));
+    return state !== undefined;
+  }
+
   add(description) {
     const index = Math.random().toString(36).slice(2);
     const todo = new Todo(index, description, false);
@@ -67,6 +72,11 @@ class TodoStore {
 
     this.#store[todoIndex] = todo;
     this.#unEdit();
+    this.#backup();
+  }
+
+  clearCompleted() {
+    this.#store = this.#store.filter((todo) => !todo.Completed);
     this.#backup();
   }
 
