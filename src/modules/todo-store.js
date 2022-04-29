@@ -11,6 +11,8 @@ class TodoStore {
     const data = localStorage.getItem('todo-store');
     const store = JSON.parse(data);
 
+    if (!store) return;
+
     this.#store = store.map(
       (todo) => new Todo(todo.index, todo.description, todo.completed),
     );
