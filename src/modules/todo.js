@@ -38,6 +38,10 @@ class Todo {
     this.#description = value;
   }
 
+  set completed(value) {
+    this.#completed = value;
+  }
+
   data() {
     return {
       index: this.#index,
