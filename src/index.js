@@ -65,10 +65,11 @@ const renderTodo = () => {
 
     // Mark todo complete
     const check = document.getElementById(`check_${todo.Index}`);
-    check.checked = todo.Completed;
-    check.value = todo.Completed;
 
     if (check) {
+      check.checked = todo.Completed;
+      check.value = todo.Completed;
+
       check.addEventListener('change', ({ target }) => {
         const state = target.value !== 'true';
         store.checkToggle(todo.Index, state);
