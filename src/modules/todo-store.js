@@ -11,6 +11,8 @@ class TodoStore {
     const data = localStorage.getItem('todo-store');
     const store = JSON.parse(data);
 
+    if (!store) return;
+
     this.#store = store.map(
       (todo) => new Todo(todo.index, todo.description, todo.completed),
     );
@@ -30,6 +32,39 @@ class TodoStore {
     const todo = new Todo(index, description, false);
     this.#store.push(todo);
     this.#backup();
+  }
+
+  editState(id, state) {
+    this.#unEdit();
+    const todoIndex = this.#store.findIndex((todo) => todo.Index === id);
+    if (todoIndex < 0) return;
+    const todo = this.#store[todoIndex];
+    todo.edit = state;
+
+    this.#store[todoIndex] = todo;
+  }
+
+  remove(id) {
+    this.#store = this.#store.filter((todo) => todo.Index !== id);
+    this.#backup();
+  }
+
+  edit(id, description) {
+    const todoIndex = this.#store.findIndex((todo) => todo.Index === id);
+    if (todoIndex < 0) return;
+    const todo = this.#store[todoIndex];
+    todo.description = description;
+
+    this.#store[todoIndex] = todo;
+    this.#unEdit();
+    this.#backup();
+  }
+
+  #unEdit() {
+    this.#store = this.#store.map((todo) => {
+      todo.edit = false;
+      return todo;
+    });
   }
 }
 

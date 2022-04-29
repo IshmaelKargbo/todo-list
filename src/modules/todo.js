@@ -5,10 +5,13 @@ class Todo {
 
   #completed;
 
+  #edit;
+
   constructor(index, description, completed) {
     this.#completed = completed;
     this.#description = description;
     this.#index = index;
+    this.#edit = false;
   }
 
   get Index() {
@@ -21,6 +24,18 @@ class Todo {
 
   get Completed() {
     return this.#completed;
+  }
+
+  get Edit() {
+    return this.#edit;
+  }
+
+  set edit(value) {
+    this.#edit = value;
+  }
+
+  set description(value) {
+    this.#description = value;
   }
 
   data() {

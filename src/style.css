@@ -29,14 +29,18 @@ button {
 }
 
 h5,
-button {
+h2,
+h3,
+h4,
+button,
+p {
   margin: 0;
   padding: 0;
 }
 
 .title-container {
   display: flex;
-  padding: 0 15px;
+  padding: 15px;
   border-bottom: 1px solid rgb(211, 211, 211);
   justify-content: space-between;
   align-items: center;
@@ -78,6 +82,34 @@ button {
   justify-content: space-between;
 }
 
+.empty {
+  text-align: center;
+  border-bottom: 1px solid rgb(211, 211, 211);
+  padding: 15px;
+  display: none;
+  font-style: italic;
+  color: #ccc;
+}
+
+.todo-list li .edit {
+  flex: 1;
+  border: none;
+}
+
+.todo-list li .title {
+  flex: 1;
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.todo-list li .edit:focus {
+  outline: none;
+}
+
 .todo-list li input[type="checkbox"] {
   margin-right: 10px;
 }
@@ -86,6 +118,7 @@ button {
   text-align: center;
   padding: 15px 0;
   width: 100%;
+  display: none;
   font-size: 15px;
   color: rgb(163, 163, 163);
 }
