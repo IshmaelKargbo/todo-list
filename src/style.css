@@ -96,9 +96,15 @@ p {
   border: none;
 }
 
+.todo-list li .title p {
+  flex: 1;
+}
+
 .todo-list li .title {
   flex: 1;
+  display: flex;
   cursor: pointer;
+  align-items: center;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
