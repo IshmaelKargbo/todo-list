@@ -2,8 +2,11 @@
 
 TODO List is a simple website that displays a list of todo and allows you to add and remove todo from that list.
 
-#### Desktop Screenshot
+#### App Screenshot
 <img src="./app_screenshot.png" alt="TODO List" />
+
+### Live Demo
+<a href="https://ishmaelkargbo.github.io/todo-list">Todo App</a>
 
 ## Built With
 
