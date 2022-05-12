@@ -1,4 +1,4 @@
-import Todo from './Todo.js';
+import Todo from './todo.js';
 
 class TodoStore {
   #store = [];
