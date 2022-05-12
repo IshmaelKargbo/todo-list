@@ -1,17 +1,22 @@
-import Todo from './todo.js';
+import Todo from './Todo.js';
 
 class TodoStore {
   #store = [];
+  #localStorage = null;
 
-  constructor() {
+  constructor(store = null) {
+    if (store) this.#localStorage = store;
+    else this.#localStorage = localStorage;
+
     this.#init();
   }
 
   #init() {
-    const data = localStorage.getItem('todo-store');
-    const store = JSON.parse(data);
+    const data = this.#localStorage.getItem('todo-store');
+    
+    if (!data) return;
 
-    if (!store) return;
+    const store = JSON.parse(data);
 
     this.#store = store.map(
       (todo) => new Todo(todo.index, todo.description, todo.completed),
@@ -20,7 +25,7 @@ class TodoStore {
 
   #backup() {
     const storeData = this.#store.map((e) => e.data());
-    localStorage.setItem('todo-store', JSON.stringify(storeData));
+    this.#localStorage.setItem('todo-store', JSON.stringify(storeData));
   }
 
   store() {

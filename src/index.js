@@ -1,5 +1,5 @@
 import './style.css';
-import TodoStore from './modules/todo-store.js';
+import TodoStore from './modules/TodoStore';
 
 const store = new TodoStore();
 const todosContainer = document.getElementById('todoList');
