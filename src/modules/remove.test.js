@@ -1,25 +1,25 @@
-import localStorage from "../__mocks__/localStorageMock";
-import TodoStore from "./TodoStore";
+import localStorage from '../__mocks__/localStorageMock.js';
+import TodoStore from './TodoStore.js';
 
 describe('test remove function', () => {
-let store = new TodoStore(localStorage);
+  const store = new TodoStore(localStorage);
 
-const todo = "Learn to write test";
+  const todo = 'Learn to write test';
 
-test('removeTodo', () => {
-store.add(todo);
+  test('removeTodo', () => {
+    store.add(todo);
 
-// get store
-let storeData = store.store();
-expect(storeData).toHaveLength(1);
-expect(storeData[0].Description).toBe('Learn to write test');
+    // get store
+    let storeData = store.store();
+    expect(storeData).toHaveLength(1);
+    expect(storeData[0].Description).toBe('Learn to write test');
 
-const currentTodo = storeData[0];
+    const currentTodo = storeData[0];
 
-store.remove(currentTodo.Index);
+    store.remove(currentTodo.Index);
 
-// get store
-storeData = store.store();
-expect(storeData).toHaveLength(0);
+    // get store
+    storeData = store.store();
+    expect(storeData).toHaveLength(0);
+  });
 });
-}) 

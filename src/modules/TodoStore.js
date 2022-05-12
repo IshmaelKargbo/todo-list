@@ -2,6 +2,7 @@ import Todo from './Todo.js';
 
 class TodoStore {
   #store = [];
+
   #localStorage = null;
 
   constructor(store = null) {
@@ -13,7 +14,7 @@ class TodoStore {
 
   #init() {
     const data = this.#localStorage.getItem('todo-store');
-    
+
     if (!data) return;
 
     const store = JSON.parse(data);
