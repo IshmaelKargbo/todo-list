@@ -10,6 +10,6 @@ describe('test add function', () => {
     store.add(todo);
     const storeData = store.store();
     expect(storeData).toHaveLength(1);
-    expect(storeData[0].Description).toBe('Learn to write test');
+    expect(storeData[0].Description).toBe(todo);
   });
 });
