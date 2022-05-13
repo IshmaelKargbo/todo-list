@@ -12,7 +12,7 @@ describe('test remove function', () => {
     // get store
     let storeData = store.store();
     expect(storeData).toHaveLength(1);
-    expect(storeData[0].Description).toBe('Learn to write test');
+    expect(storeData[0].Description).toBe(todo);
 
     const currentTodo = storeData[0];
 
