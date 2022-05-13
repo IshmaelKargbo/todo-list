@@ -4,7 +4,6 @@ import TodoStore from './TodoStore.js';
 describe('test update function', () => {
   const store = new TodoStore(localStorage);
 
-
   test('Add Todo', () => {
     const todo = 'Learn to write test';
     store.add(todo);
