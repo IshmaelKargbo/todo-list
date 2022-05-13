@@ -4,7 +4,7 @@
   "description": "TODO List is a simple website that displays a list of todo and allows you to add and remove todo from that list.",
   "private": true,
   "scripts": {
-    "serve": "webpack serve --open",
+    "start": "webpack serve --open",
     "dev": "webpack --mode development",
     "test": "jest --coverage",
     "build": "webpack --mode production"
